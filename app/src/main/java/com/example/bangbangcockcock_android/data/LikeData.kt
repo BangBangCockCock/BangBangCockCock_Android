@@ -1,4 +1,4 @@
-package com.example.bangbangcockcock_android
+package com.example.bangbangcockcock_android.data
 
 import android.graphics.drawable.Drawable
 

@@ -1,11 +1,12 @@
-package com.example.bangbangcockcock_android
+package com.example.bangbangcockcock_android.viewholder
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import org.w3c.dom.Text
+import com.example.bangbangcockcock_android.R
+import com.example.bangbangcockcock_android.data.LikeData
 
 class LikeViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
     val iv_like = itemView.findViewById<ImageView>(R.id.iv_like)
