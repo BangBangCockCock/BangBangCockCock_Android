@@ -1,4 +1,4 @@
-package com.example.bangbangcockcock_android
+package com.example.bangbangcockcock_android.ui.fragment
 
 import android.os.Build
 import android.os.Bundle
@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import com.example.bangbangcockcock_android.data.LikeData
+import com.example.bangbangcockcock_android.R
+import com.example.bangbangcockcock_android.adapter.LikeAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
