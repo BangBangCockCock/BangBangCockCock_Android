@@ -113,11 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="33dp"
-            android:scrollbarAlwaysDrawHorizontalTrack="true"
-            android:scrollbarFadeDuration="0"
-            android:scrollbarStyle="outsideInset"
-            android:scrollbarThumbHorizontal="@android:color/white"
-            android:scrollbarTrackHorizontal="@color/lightGray">
+            android:scrollbars="none" >
 
             <LinearLayout
                 android:layout_width="wrap_content"
