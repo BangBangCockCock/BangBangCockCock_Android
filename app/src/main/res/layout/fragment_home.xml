@@ -11,9 +11,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,9 +69,7 @@
                 android:layout_marginLeft="24dp"
                 android:textSize="20sp"
                 android:textColor="#2e2e2e"
-                android:lineSpacingExtra="9sp"
-                android:gravity="center_horizontal"
-                tools:text="오늘 열리는 콘서트"
+                android:text="오늘 열리는 콘서트"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -86,8 +81,8 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="310dp"
-                    android:layout_height="156dp"
+                    android:layout_width="341dp"
+                    android:layout_height="178dp"
                     android:src="@drawable/main_img_thumbnail_big"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -100,25 +95,22 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:lineSpacingExtra="9sp"
                     android:textColor="#2e2e2e"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/imageView"
-                    tools:text="United At Home - David Guetta.." />
+                    android:text="United At Home - David Guetta.." />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:lineSpacingExtra="7sp"
                     android:textColor="#2e2e2e"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="@+id/textView3"
-
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    tools:text="2020.06.07" />
+                    android:text="2020.06.07" />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -126,12 +118,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:lineSpacingExtra="7sp"
                     android:textColor="#00b9f1"
                     android:textSize="15sp"
                     app:layout_constraintStart_toEndOf="@+id/textView4"
                     app:layout_constraintTop_toTopOf="@+id/textView4"
-                    tools:text="#DJ" />
+                    android:text="#DJ" />
 
                 <ImageButton
                     android:id="@+id/star"
@@ -151,13 +142,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:lineSpacingExtra="6sp"
                     android:textColor="#b7b7b7"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/star"
                     app:layout_constraintEnd_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="@+id/star"
-                    tools:text="1,345" />
+                    android:text="1,345" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -166,9 +156,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="#2e2e2e"
-                android:lineSpacingExtra="9sp"
                 android:gravity="center_horizontal"
-                tools:text="최근 올라온 콘서트"
+                android:text="최근 올라온 콘서트"
                 android:layout_marginLeft="24dp"
                 android:layout_marginBottom="12dp"
                 />
@@ -185,7 +174,6 @@
 
 
         </LinearLayout>
-    </ScrollView>
 
     </LinearLayout>
 
