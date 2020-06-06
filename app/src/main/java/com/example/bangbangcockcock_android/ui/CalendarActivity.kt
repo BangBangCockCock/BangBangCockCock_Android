@@ -1,11 +1,14 @@
 package com.example.bangbangcockcock_android.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.bangbangcockcock_android.R
+import com.example.bangbangcockcock_android.adapter.CalendarAdapter
+import com.example.bangbangcockcock_android.data.CalendarData
 import com.michalsvec.singlerowcalendar.calendar.CalendarChangesObserver
 import com.michalsvec.singlerowcalendar.calendar.CalendarViewManager
 import com.michalsvec.singlerowcalendar.calendar.SingleRowCalendarAdapter
@@ -19,12 +22,21 @@ class CalendarActivity : AppCompatActivity() {
 
     private val calendar = Calendar.getInstance()
     private var currentMonth = 0
+    lateinit var calendarAdapter : CalendarAdapter
+    val datas = mutableListOf<CalendarData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
 
-        // set current date to calendar and current month to currentMonth variable
+        iv_back.setOnClickListener {
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+        // 현재 날짜
         calendar.time = Date()
         currentMonth = calendar[Calendar.MONTH]
 
@@ -34,18 +46,17 @@ class CalendarActivity : AppCompatActivity() {
             window.statusBarColor = Color.WHITE
         }
 
-        // calendar view manager is responsible for our displaying logic
+        // calendar view manager
         val myCalendarViewManager = object : CalendarViewManager {
             override fun setCalendarViewResourceId(
                 position: Int,
                 date: Date,
                 isSelected: Boolean
             ): Int {
-                // set date to calendar according to position where we are
                 val cal = Calendar.getInstance()
                 cal.time = date
-                // 선택한 날짜에 따라 item 뿌리는데 이건 수정해야함
-                // 일단 이 예제에서 월수금은 특별 layout 나머지는 기본 layout
+                // 선택한 날짜에 따라 점 개수 .. 다름 - 이부분 서버에 맞게 수정해야함
+                // 일단 임의로 월수금은 특별 layout 나머지는 기본 layout으로 설정되어있음
                 return if (isSelected)
                     when (cal[Calendar.DAY_OF_WEEK]) {
                         Calendar.MONDAY -> R.layout.first_special_selected_calendar_item
@@ -70,40 +81,48 @@ class CalendarActivity : AppCompatActivity() {
                 position: Int,
                 isSelected: Boolean
             ) {
-                // using this method we can bind data to calendar view
-                // good practice is if all views in layout have same IDs in all item views
+                //  bind data to calendar view
                 holder.itemView.tv_date_calendar_item.text = DateUtils.getDayNumber(date)
                 holder.itemView.tv_day_calendar_item.text = DateUtils.getDay3LettersName(date)
 
             }
         }
 
-        // using calendar changes observer we can track changes in calendar
+
+        // calendar 변경사항 확인
         val myCalendarChangesObserver = object : CalendarChangesObserver {
             // you can override more methods, in this example we need only this one
             override fun whenSelectionChanged(isSelected: Boolean, position: Int, date: Date) {
-                tvDate.text = "${DateUtils.getMonthName(date)}, ${DateUtils.getDayNumber(date)} "
-                tvDay.text = DateUtils.getDayName(date)
+                tvDate.text = "${DateUtils.getYear(date)}년 ${DateUtils.getMonthNumber(date)}월"
+                val cal = Calendar.getInstance()
+                cal.time = date
+
+
                 super.whenSelectionChanged(isSelected, position, date)
             }
         }
 
-        // selection manager is responsible for managing selection
+
+        // selection manager
         val mySelectionManager = object : CalendarSelectionManager {
             override fun canBeItemSelected(position: Int, date: Date): Boolean {
                 // set date to calendar according to position
                 val cal = Calendar.getInstance()
                 cal.time = date
-                //in this example sunday and saturday can't be selected, other item can be selected
+
+                calendarAdapter = CalendarAdapter(applicationContext)
+                rv_calendar.adapter = calendarAdapter
+                loadDatas()
+
                 return when (cal[Calendar.DAY_OF_WEEK]) {
-                    Calendar.SATURDAY -> false
-                    Calendar.SUNDAY -> false
+                    cal[Calendar.DAY_OF_WEEK] -> true
                     else -> true
                 }
             }
         }
 
-        // here we init our calendar, also you can set more properties if you need them
+
+        // 캘린더 초기화
         val singleRowCalendar = main_single_row_calendar.apply {
             calendarViewManager = myCalendarViewManager
             calendarChangesObserver = myCalendarChangesObserver
@@ -111,6 +130,8 @@ class CalendarActivity : AppCompatActivity() {
             setDates(getFutureDatesOfCurrentMonth())
             init()
         }
+
+        // 다른 달로 이동
         btnRight.setOnClickListener {
             singleRowCalendar.setDates(getDatesOfNextMonth())
         }
@@ -120,26 +141,29 @@ class CalendarActivity : AppCompatActivity() {
         }
     }
 
+    // 다음달로 이동
     private fun getDatesOfNextMonth(): List<Date> {
-        currentMonth++ // + because we want next month
+        currentMonth++
         if (currentMonth == 12) {
-            // we will switch to january of next year, when we reach last month of year
+            // 12월에서 다음 해 1월로 변경
             calendar.set(Calendar.YEAR, calendar[Calendar.YEAR] + 1)
-            currentMonth = 0 // 0 == january
+            currentMonth = 0 // january
         }
         return getDates(mutableListOf())
     }
 
+    // 이전달로 이동
     private fun getDatesOfPreviousMonth(): List<Date> {
-        currentMonth-- // - because we want previous month
+        currentMonth--
         if (currentMonth == -1) {
-            // we will switch to december of previous year, when we reach first month of year
+            // 1월에서 이전 해 12월로 변경
             calendar.set(Calendar.YEAR, calendar[Calendar.YEAR] - 1)
-            currentMonth = 11 // 11 == december
+            currentMonth = 11 // december
         }
         return getDates(mutableListOf())
     }
 
+    // 현재 month
     private fun getFutureDatesOfCurrentMonth(): List<Date> {
         // get all next dates of current month
         currentMonth = calendar[Calendar.MONTH]
@@ -159,6 +183,29 @@ class CalendarActivity : AppCompatActivity() {
         }
         calendar.add(Calendar.DATE, -1)
         return list
+    }
+
+    private fun loadDatas() {
+        datas.apply {
+            add(
+                CalendarData(
+                    iv_content = R.drawable.calendar_event_2
+                )
+            )
+            add(
+                CalendarData(
+                    iv_content = R.drawable.calendar_event_2
+                )
+            )
+            add(
+                CalendarData(
+                    iv_content = R.drawable.calendar_event_2
+                )
+            )
+        }
+
+        calendarAdapter.datas = datas
+        calendarAdapter.notifyDataSetChanged()
     }
 
 }

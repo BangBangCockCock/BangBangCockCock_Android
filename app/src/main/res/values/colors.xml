@@ -4,9 +4,10 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="white">#ffffff</color>
     <color name="grey">#7a7a7a</color>
     <color name="lightGrey">#aaaaaa</color>
-    <color name="veryLightGrey">#f0f0f0</color>
+    <color name="veryLightGrey">#e6e6e6</color>
     <color name="purple">#7d64e6</color>
     <color name="yellow">#ffee00</color>
     <color name ="red">#f9320c</color>
