@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bangbangcockcock_android.R
 import com.example.bangbangcockcock_android.R.drawable.btn_dday14
+import com.example.bangbangcockcock_android.data.Category
 import com.example.bangbangcockcock_android.data.CategoryData
 
 class CategoryRecyclerViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
@@ -18,20 +19,22 @@ class CategoryRecyclerViewHolder(itemView : View) : RecyclerView.ViewHolder(item
     val btn = itemView.findViewById<Button>(R.id.btn_recycler_tag)
     val img = itemView.findViewById<ImageView>(R.id.img_recycler_datas)
 
-    fun bind(Data: CategoryData)
+    fun bind(Data: Category)
     {
-        Glide.with(itemView).load(Data.img).into(img)
-        title.text = Data.title
-        tag.text = Data.tag
-        date.text = Data.date
-        if(Data.dday.toString().equals("D-7"))
-        {
-            btn.setBackgroundColor(R.drawable.btn_dday)
-        }
-        else
-        {
-            btn.setBackgroundColor(R.drawable.btn_dday14)
-        }
+        Glide.with(itemView).load(Data.concert_image).into(img)
+        title.text = Data.concert_title
+        tag.text = Data.concert_tag
+        date.text = Data.concert_date
+//        if(Data.dday.toString().equals("D-7"))
+//        {
+//            btn.setBackgroundColor(R.drawable.btn_dday)
+//        }
+//        else
+//        {
+//            btn.setBackgroundColor(R.drawable.btn_dday14)
+//        }
+
+        btn.text = "D-7"
 
     }
 }
