@@ -26,9 +26,9 @@ class MainTabAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm,
         {
             0-> "전체"
             1-> "아이돌"
-            2-> "힙합"
-            3->"DJ"
-            else -> "기타"
+            2-> "코로나펀딩"
+            3->"행사"
+            else -> "락/인디"
         }
         return title
     }

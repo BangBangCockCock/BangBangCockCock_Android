@@ -1,6 +1,7 @@
 package com.example.bangbangcockcock_android.ui
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
@@ -29,10 +30,12 @@ class MainActivity : AppCompatActivity() {
     }
     fun initViewPager()
     {
+
         val pagerAdapter = MainTabAdapter(supportFragmentManager)
         val pager = findViewById<ViewPager>(R.id.viewPager)
         pager.adapter = pagerAdapter
         val tab = findViewById<TabLayout>(R.id.tab)
+        tab.setSelectedTabIndicatorColor(Color.parseColor("#f9320c"));
         tab.setupWithViewPager(pager)
     }
 }
