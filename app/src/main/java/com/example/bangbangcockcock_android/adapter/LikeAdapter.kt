@@ -1,16 +1,20 @@
-package com.example.bangbangcockcock_android
+package com.example.bangbangcockcock_android.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bangbangcockcock_android.data.LikeData
+import com.example.bangbangcockcock_android.viewholder.LikeViewHolder
+import com.example.bangbangcockcock_android.R
 
 class LikeAdapter(private val context : Context) : RecyclerView.Adapter<LikeViewHolder>() {
     var datas = mutableListOf<LikeData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_like, parent, false)
-        return LikeViewHolder(view)
+        return LikeViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int {
