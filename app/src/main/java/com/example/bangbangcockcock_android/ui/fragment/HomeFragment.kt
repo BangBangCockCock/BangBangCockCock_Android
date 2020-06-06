@@ -107,7 +107,7 @@ class HomeFragment : Fragment() {
             )
         }
         likeAdapter.datas = datas
-        likeAdapter.notifyDataSetChanged()
+        likeAdapter.notifyDataSetChanged()//
     }
 
 }
