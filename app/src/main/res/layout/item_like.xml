@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginRight="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="9dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="18dp"
+        android:id="@+id/ConstraintLayout">
+
+        <ImageView
+            android:id="@+id/iv_like"
+            android:layout_width="182dp"
+            android:layout_height="153dp"
+            android:src="@drawable/img_thumbnail_mid"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="United At Home - D.."
+            android:textSize="18sp"
+            android:textColor="#2e2e2e"
+            app:layout_constraintStart_toStartOf="@+id/iv_like"
+            app:layout_constraintTop_toBottomOf="@+id/iv_like" />
+
+
+        <TextView
+            android:id="@+id/tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="7sp"
+            android:textColor="#00b9f1"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="#DJ" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="2020.06.07"
+            android:textColor="#2e2e2e"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/tag"
+            app:layout_constraintTop_toBottomOf="@+id/tag"
+            />
+
+        <ImageButton
+            android:id="@+id/star"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="47dp"
+            android:layout_marginLeft="47dp"
+            android:background="@drawable/main_img_star"
+            app:layout_constraintBottom_toBottomOf="@+id/date"
+            app:layout_constraintStart_toEndOf="@+id/date"
+            app:layout_constraintTop_toTopOf="@+id/date" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="6sp"
+            android:textColor="#b7b7b7"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/star"
+            app:layout_constraintStart_toEndOf="@+id/star"
+            app:layout_constraintTop_toTopOf="@+id/star"
+            tools:text="1,345" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
