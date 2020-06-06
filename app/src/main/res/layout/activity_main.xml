@@ -117,7 +117,7 @@
             android:scrollbarFadeDuration="0"
             android:scrollbarStyle="outsideInset"
             android:scrollbarThumbHorizontal="@android:color/white"
-            android:scrollbarTrackHorizontal="@color/lightGray">
+            android:scrollbarTrackHorizontal="@color/lightGrey">
 
             <LinearLayout
                 android:layout_width="wrap_content"
