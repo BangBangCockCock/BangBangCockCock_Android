@@ -3,6 +3,7 @@ package com.example.bangbangcockcock_android.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.bangbangcockcock_android.HomeFragment
 import com.example.bangbangcockcock_android.ui.fragment.*
 
 class MainTabAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm,
