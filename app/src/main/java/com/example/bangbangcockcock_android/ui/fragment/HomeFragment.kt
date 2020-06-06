@@ -74,6 +74,9 @@ class HomeFragment : Fragment() {
                 )
             )
         }
+        recentAdapter.datas = datas
+        recentAdapter.notifyDataSetChanged()
+
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
