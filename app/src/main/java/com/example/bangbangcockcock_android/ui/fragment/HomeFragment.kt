@@ -7,6 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import com.example.bangbangcockcock_android.adapter.LikeAdapter
+import com.example.bangbangcockcock_android.data.LikeData
+import com.example.bangbangcockcock_android.recent_item.RecentAdapter
+import com.example.bangbangcockcock_android.recent_item.RecentData
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
