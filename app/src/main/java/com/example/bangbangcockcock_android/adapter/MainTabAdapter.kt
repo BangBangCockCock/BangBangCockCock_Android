@@ -3,6 +3,7 @@ package com.example.bangbangcockcock_android.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.bangbangcockcock_android.HomeFragment
 import com.example.bangbangcockcock_android.ui.fragment.*
 
 class MainTabAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm,
@@ -26,9 +27,9 @@ class MainTabAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm,
         {
             0-> "전체"
             1-> "아이돌"
-            2-> "힙합"
-            3->"DJ"
-            else -> "기타"
+            2-> "코로나펀딩"
+            3->"행사"
+            else -> "락/인디"
         }
         return title
     }

@@ -31,11 +31,12 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
             android:layout_marginTop="10dp"
             android:text="United At Home - D.."
-            android:textSize="18sp"
             android:textColor="#2e2e2e"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/iv_like"
             app:layout_constraintTop_toBottomOf="@+id/iv_like" />
 
@@ -49,7 +50,7 @@
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/title"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            tools:text="#DJ" />
+            android:text="#DJ" />
 
         <TextView
             android:id="@+id/date"
@@ -67,23 +68,22 @@
             android:id="@+id/star"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_marginStart="47dp"
-            android:layout_marginLeft="47dp"
+            android:layout_marginEnd="4dp"
             android:background="@drawable/main_img_star"
             app:layout_constraintBottom_toBottomOf="@+id/date"
-            app:layout_constraintStart_toEndOf="@+id/date"
+            app:layout_constraintEnd_toStartOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/date" />
 
         <TextView
+            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lineSpacingExtra="6sp"
+            android:text="1,345"
             android:textColor="#b7b7b7"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/star"
-            app:layout_constraintStart_toEndOf="@+id/star"
-            app:layout_constraintTop_toTopOf="@+id/star"
-            tools:text="1,345" />
+            app:layout_constraintEnd_toEndOf="@+id/iv_like"
+            app:layout_constraintTop_toTopOf="@+id/star" />
 
 
 
