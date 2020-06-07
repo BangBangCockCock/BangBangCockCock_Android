@@ -340,24 +340,95 @@ class MainTabAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm,
 
 ### Calendar
 * 관심있는 공연에 좋아요를 누르면 달력에 표시됨
+* Calendar 라이브러리  
+`implementation 'com.michalsvec:single-row-calednar:1.0.0'`
 
+1. 기본 : special calendar item
+2. 일정이 포함된 날 : special selected calendar item
+3. SingleRowCalendar
+```xml
+<com.michalsvec.singlerowcalendar.calendar.SingleRowCalendar
+    android:id="@+id/main_single_row_calendar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginEnd="16dp"
+    app:deselection="false"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvDate"
+    app:longPress="false"
+    app:multiSelection="false" />
+```
+4. CalendarViewManager 등록
 ```kotlin
-// selection manager
-        val mySelectionManager = object : CalendarSelectionManager {
-            override fun canBeItemSelected(position: Int, date: Date): Boolean {
-
-                calendarAdapter = CalendarAdapter(applicationContext)
-                rv_calendar.adapter = calendarAdapter
-                loadDatas()
-
-                return when (cal[Calendar.DAY_OF_WEEK]) {
-                    cal[Calendar.DAY_OF_WEEK] -> true
-                    else -> true
-                }
-            }
-        }
+val myCalendarViewManager = object : CalendarViewManager {  
+    override fun setCalendarViewResourceId(                 
+        position: Int,                                      
+        date: Date,                                         
+        isSelected: Boolean                                 
+    ): Int {                                                
+        // return item layout files, which you have created 
+    }                                                       
+                                                            
+    override fun bindDataToCalendarView(                    
+        holder: SingleRowCalendarAdapter.CalendarViewHolder,
+        date: Date,                                         
+        position: Int,                                      
+        isSelected: Boolean                                 
+    ) {                                                     
+        // bind data to calendar item views                 
+    }                                                       
+}  
 ```
 
+5. CalendarSelectionManager 등록
+```kotlin
+val mySelectionManager = object : CalendarSelectionManager {             
+    override fun canBeItemSelected(position: Int, date: Date): Boolean { 
+        // return true if item can be selected                           
+    }                                                                    
+}
+```
+
+6. CalendarChangesObserver 등록
+```kotlin
+val myCalendarChangesObserver = object : CalendarChangesObserver {
+
+    override fun whenWeekMonthYearChanged(weekNumber: String,monthNumber: String,monthName:
+    String,year: String,date: Date) { 
+        super.whenWeekMonthYearChanged(weekNumber, monthNumber, monthName, year, date)                 
+    }                                                                                                
+    
+    override fun whenSelectionChanged(isSelected: Boolean, position: Int, date: Date) {               
+        super.whenSelectionChanged(isSelected, position, date)
+    }       
+    
+    override fun whenCalendarScrolled(dx: Int, dy: Int) {                                             
+        super.whenCalendarScrolled(dx, dy)                                                             
+    }                                                                                                
+    
+    override fun whenSelectionRestored() {                                                             
+        super.whenSelectionRestored()                                                                 
+    }       
+    
+    override fun whenSelectionRefreshed() {                                                          
+        super.whenSelectionRefreshed()                                                                 
+    }   
+```
+
+7. 날짜 초기화
+```kotlin
+val singleRowCalendar = main_single_row_calendar.apply {        
+    calendarViewManager = myCalendarViewManager                
+    calendarChangesObserver = myCalendarChangesObserver        
+    calendarSelectionManager = mySelectionManager              
+    futureDaysCount = 30                                       
+    includeCurrentDate = true                                  
+    init()                                                     
+}   
+```
 <br>
 
 ### 서버 연결
