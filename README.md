@@ -3,6 +3,8 @@
 👉🏻 집에서 방방뛰고 입장은 콕!(터치한번)
 
 <br>
+<img style="border: 1px solid black !important; border-radius:20px;" src="https://github.com/BangBangCockCock/BangBangCockCock_Server/blob/master/public/images/bangbangIcon.jpeg?raw=true" width="200px" />
+<br>
 
 ~~~
 "죄송해요, 제가 방구석에 선약이 있어서,,"
