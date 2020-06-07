@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bangbangcockcock_android.data.LikeData
 import com.example.bangbangcockcock_android.viewholder.LikeViewHolder
 import com.example.bangbangcockcock_android.R
+import com.example.bangbangcockcock_android.data.Category
+import com.example.bangbangcockcock_android.data.CategoryData
 
-class LikeAdapter(private val context : Context) : RecyclerView.Adapter<LikeViewHolder>() {
-    var datas = mutableListOf<LikeData>()
+class LikeAdapter(private val context : Context, val datas: List<Category>) : RecyclerView.Adapter<LikeViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikeViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_like, parent, false)
         return LikeViewHolder(

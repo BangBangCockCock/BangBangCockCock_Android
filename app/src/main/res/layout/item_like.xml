@@ -5,7 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginRight="15dp">
+    android:layout_marginRight="15dp"
+    android:elevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -15,10 +16,27 @@
         android:paddingBottom="18dp"
         android:id="@+id/ConstraintLayout">
 
+        <Button
+            android:id="@+id/btn_recycler_tag"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:text="D-7"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:lineSpacingExtra="6sp"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_dday"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
         <ImageView
             android:id="@+id/iv_like"
             android:layout_width="182dp"
             android:layout_height="153dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/img_thumbnail_mid"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
