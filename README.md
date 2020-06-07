@@ -22,14 +22,12 @@
 
 ---
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/52772787/83956526-01644580-a89a-11ea-9deb-f249481dc57b.png" alt="tablayout1" height="1000px" />
-</p>
+![main_noline ver](https://user-images.githubusercontent.com/52772787/83956526-01644580-a89a-11ea-9deb-f249481dc57b.png)
 
 
 ### 🔥 구성
 
-#### Main
+### Main
 
 [카테고리]
 * 전체
@@ -37,12 +35,28 @@
   * 오늘 올라온 콘서트
   * RecyclerView - 최근 올라온 콘서트
 * 아이돌
+  * 
 * 힙합
 * DJ
 * 락/인디
 
-## Calendar
-* 
+### Calendar
+* 관심있는 공연에 좋아요를 누르면 달력에 표시됨
 
+```kotlin
+// selection manager
+        val mySelectionManager = object : CalendarSelectionManager {
+            override fun canBeItemSelected(position: Int, date: Date): Boolean {
 
+                calendarAdapter = CalendarAdapter(applicationContext)
+                rv_calendar.adapter = calendarAdapter
+                loadDatas()
+
+                return when (cal[Calendar.DAY_OF_WEEK]) {
+                    cal[Calendar.DAY_OF_WEEK] -> true
+                    else -> true
+                }
+            }
+        }
+```
 
