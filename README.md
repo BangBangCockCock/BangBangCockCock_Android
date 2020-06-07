@@ -339,6 +339,7 @@ class MainTabAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm,
 <br>
 
 ### Calendar
+![ezgif-6-fb9f11d8911d](https://user-images.githubusercontent.com/38918396/83957704-109cc080-a8a5-11ea-8c0c-d417b47f506a.gif)
 * 관심있는 공연에 좋아요를 누르면 달력에 표시됨
 * Calendar 라이브러리  
 `implementation 'com.michalsvec:single-row-calednar:1.0.0'`
