@@ -26,7 +26,7 @@
 
 ### 🔥 시현영상
 
-<p align="center"><img src="/BangBangCockCock_Android/img/BangCock.gif" alt="Register" height="500px" /></p>
+<p align="center"><img src="/BangBangCockCock_Android/img/bangcock.gif" alt="Register" height="500px" /></p>
 
 
 ### 🔥 구성
