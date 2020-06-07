@@ -130,6 +130,9 @@ class MainTabAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm,
 <br>
 
 #### ✔️ CoordinatorLayout + CollapsingToolbarLayout 응용한 탭 스크롤 뷰
+<br>
+<p align="center"><img src="/img/qq.gif" alt="Register" height="500px" /></p>
+<br>
 
 ~~~kotlin
 <?xml version="1.0" encoding="utf-8"?>
