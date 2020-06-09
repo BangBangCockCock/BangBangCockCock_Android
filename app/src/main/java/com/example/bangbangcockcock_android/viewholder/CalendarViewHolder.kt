@@ -12,7 +12,7 @@ class CalendarViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
 
     fun bind(calendarData : CalendarData){
-        Glide.with(itemView).load(R.drawable.calendar_event_2).into(iv_content)
+        Glide.with(itemView).load(calendarData.iv_content).into(iv_content)
     }
 }
 

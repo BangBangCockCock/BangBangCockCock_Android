@@ -7,18 +7,18 @@
     tools:context=".ui.CalendarActivity">
 
     <com.michalsvec.singlerowcalendar.calendar.SingleRowCalendar
-        android:id="@+id/main_single_row_calendar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
-        app:deselection="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDate"
-        app:longPress="false"
-        app:multiSelection="false" />
+    android:id="@+id/main_single_row_calendar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginEnd="16dp"
+    app:deselection="false"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvDate"
+    app:longPress="false"
+    app:multiSelection="false" />
 
     <TextView
         android:id="@+id/tvDate"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
         android:fontFamily="sans-serif-medium"
-        android:text="2020년 6월"
+        android:text="2020년 06월"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/main_single_row_calendar"
@@ -60,6 +60,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/calendar_btn_back" />
 
+    <TextView
+        android:id="@+id/tv_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:lineSpacingExtra="6sp"
+        android:textColor="#94000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_back"
+        app:layout_constraintEnd_toStartOf="@+id/switch4"
+        app:layout_constraintTop_toTopOf="@+id/iv_back"
+        tools:text="즐겨찾기" />
+
+    <com.github.angads25.toggle.LabeledSwitch
+        android:id="@+id/switch4"
+        android:layout_width="39dp"
+        android:layout_height="22dp"
+        android:layout_margin="16dp"
+        android:textSize="0dp"
+        app:colorBorder="@color/red"
+        app:colorOn="@color/red"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_star"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_star"
+        app:on="true" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -71,12 +97,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_calendar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_calendar" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

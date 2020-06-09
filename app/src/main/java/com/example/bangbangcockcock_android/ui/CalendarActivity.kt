@@ -23,7 +23,7 @@ class CalendarActivity : AppCompatActivity() {
     private val calendar = Calendar.getInstance()
     private var currentMonth = 0
     lateinit var calendarAdapter : CalendarAdapter
-    val datas = mutableListOf<CalendarData>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +34,7 @@ class CalendarActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        tv_star.setText("즐겨찾기")
 
 
         // 현재 날짜
@@ -112,7 +113,13 @@ class CalendarActivity : AppCompatActivity() {
 
                 calendarAdapter = CalendarAdapter(applicationContext)
                 rv_calendar.adapter = calendarAdapter
-                loadDatas()
+
+                when (cal[Calendar.DAY_OF_WEEK]) {
+                    Calendar.MONDAY -> loadDatas(0)
+                    Calendar.WEDNESDAY -> loadDatas(1)
+                    Calendar.FRIDAY -> loadDatas(2)
+                    else -> rv_calendar.removeAllViewsInLayout()
+                }
 
                 return when (cal[Calendar.DAY_OF_WEEK]) {
                     cal[Calendar.DAY_OF_WEEK] -> true
@@ -120,6 +127,7 @@ class CalendarActivity : AppCompatActivity() {
                 }
             }
         }
+
 
 
         // 캘린더 초기화
@@ -134,10 +142,12 @@ class CalendarActivity : AppCompatActivity() {
         // 다른 달로 이동
         btnRight.setOnClickListener {
             singleRowCalendar.setDates(getDatesOfNextMonth())
+            myCalendarChangesObserver.whenSelectionChanged(isSelected = true, position = 0, date = calendar.time)
         }
 
         btnLeft.setOnClickListener {
             singleRowCalendar.setDates(getDatesOfPreviousMonth())
+            myCalendarChangesObserver.whenSelectionChanged(isSelected = true, position = 0, date = calendar.time)
         }
     }
 
@@ -175,9 +185,10 @@ class CalendarActivity : AppCompatActivity() {
         // load dates of whole month
         calendar.set(Calendar.MONTH, currentMonth)
         calendar.set(Calendar.DAY_OF_MONTH, 1)
+
         list.add(calendar.time)
         while (currentMonth == calendar[Calendar.MONTH]) {
-            calendar.add(Calendar.DATE, +1)
+            calendar.add(Calendar.DATE, 1)
             if (calendar[Calendar.MONTH] == currentMonth)
                 list.add(calendar.time)
         }
@@ -185,23 +196,19 @@ class CalendarActivity : AppCompatActivity() {
         return list
     }
 
-    private fun loadDatas() {
+    fun loadDatas(n : Int) {
+        val datas = mutableListOf<CalendarData>()
+
         datas.apply {
-            add(
-                CalendarData(
-                    iv_content = R.drawable.calendar_event_2
+            for(i in 0..n) {
+                rv_calendar.removeAllViewsInLayout()
+                add(
+                    CalendarData(
+                        iv_content = R.drawable.calendar_event_2
+                    )
                 )
-            )
-            add(
-                CalendarData(
-                    iv_content = R.drawable.calendar_event_2
-                )
-            )
-            add(
-                CalendarData(
-                    iv_content = R.drawable.calendar_event_2
-                )
-            )
+            }
+
         }
 
         calendarAdapter.datas = datas
@@ -209,3 +216,4 @@ class CalendarActivity : AppCompatActivity() {
     }
 
 }
+

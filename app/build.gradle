@@ -60,4 +60,7 @@ dependencies {
 
     // calendar
     implementation 'com.michalsvec:single-row-calednar:1.0.0'
+
+    // toggle
+    implementation 'com.github.angads25:toggle:1.0.0'
 }
